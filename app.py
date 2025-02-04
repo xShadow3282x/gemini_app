@@ -9,7 +9,7 @@ print("🚀 Starting FastAPI server...")
 
 # Load .env file
 load_dotenv()
-API_KEY = os.getenv("GEMINI_API_KEY")
+API_KEY = ("AIzaSyDxyzGj8p4MqRWGqpAfFNCQLcWNUNh5aOg")
 
 # Debugging: Check if API key is loaded
 print(f"🔑 API Key Loaded: {API_KEY is not None}")
