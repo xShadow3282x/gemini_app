@@ -2,6 +2,7 @@ from fastapi import FastAPI
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
+from pydantic import BaseModel
 
 # Debugging: Print startup message
 print("🚀 Starting FastAPI server...")
@@ -25,10 +26,14 @@ app = FastAPI()  # Ensure 'app' is defined here
 
 print("✅ FastAPI app initialized.")
 
+# Pydantic model to validate the incoming request body
+class RequestBody(BaseModel):
+    prompt: str
+
 @app.post("/generate")
-def generate_text(prompt: str):
-    print(f"📩 Received prompt: {prompt}")  # Debugging print
-    response = model.generate_content(prompt)
+def generate_text(request: RequestBody):
+    print(f"📩 Received prompt: {request.prompt}")  # Debugging print
+    response = model.generate_content(request.prompt)
     print(f"📝 Response: {response.text}")  # Debugging print
     return {"response": response.text}
 
