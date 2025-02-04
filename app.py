@@ -37,7 +37,10 @@ def generate_text(request: RequestBody):
     print(f"📝 Response: {response.text}")  # Debugging print
     return {"response": response.text}
 
+import uvicorn
+
 if __name__ == "__main__":
-    import uvicorn
     print("🌍 Running Uvicorn...")
-    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
+    # Remove --reload to avoid the error
+    uvicorn.run("app:app", host="127.0.0.1", port=8000)
+
